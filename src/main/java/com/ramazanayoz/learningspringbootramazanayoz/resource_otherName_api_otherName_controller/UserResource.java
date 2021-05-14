@@ -33,12 +33,8 @@ public class UserResource {
 	
 	@RequestMapping(method = RequestMethod.GET, path = "{userUid}")
 	public ResponseEntity<?> fetchUser(@PathVariable("userUid") UUID userUid) {
-		Optional<User> userOptional = userService.getUser(userUid);
-		if(userOptional.isPresent()) {
-			return ResponseEntity.ok(userOptional.get());
-		}
-		return ResponseEntity.status(HttpStatus.NOT_FOUND)
-				.body(new ErrorMessage("user"+ userUid+ " was not found."));
+		return userService.getUser(userUid).<ResponseEntity<?>>map(ResponseEntity::ok)
+			.orElseGet(()-> ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorMessage("user"+ userUid+ " was not found.")));
 	}
 	
 	class ErrorMessage {
