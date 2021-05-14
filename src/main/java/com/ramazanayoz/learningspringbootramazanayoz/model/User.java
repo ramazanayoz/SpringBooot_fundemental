@@ -6,11 +6,11 @@ public class User {
 	
 	//user id
 	private UUID userUid;
-	private final String fistName;
-	private final String lastName;
-	private final Gender gender;
-	private final Integer age;
-	private final String email;
+	private String fistName;
+	private String lastName;
+	private Gender gender;
+	private Integer age;
+	private String email;
 	
 	public User(UUID userUid, String fistName, String lastName, Gender gender, Integer age, String email) {
 		this.userUid = userUid;
