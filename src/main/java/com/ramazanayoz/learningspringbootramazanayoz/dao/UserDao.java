@@ -1,10 +1,11 @@
-package dao;
+package com.ramazanayoz.learningspringbootramazanayoz.dao;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import model.User;
+import com.ramazanayoz.learningspringbootramazanayoz.model.User;
+
 
 public interface UserDao {
 

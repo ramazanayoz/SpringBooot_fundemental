@@ -1,4 +1,4 @@
-package model;
+package com.ramazanayoz.learningspringbootramazanayoz.model;
 
 import java.util.UUID;
 

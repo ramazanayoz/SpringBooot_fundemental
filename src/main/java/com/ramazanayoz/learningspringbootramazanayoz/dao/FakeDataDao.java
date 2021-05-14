@@ -1,4 +1,4 @@
-package dao;
+package com.ramazanayoz.learningspringbootramazanayoz.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,8 +9,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import model.User;
-import model.User.Gender;
+import com.ramazanayoz.learningspringbootramazanayoz.model.User;
+import com.ramazanayoz.learningspringbootramazanayoz.model.User.Gender;
+
 
 @Repository
 public class FakeDataDao implements UserDao {

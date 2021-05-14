@@ -1,4 +1,4 @@
-package service;
+package com.ramazanayoz.learningspringbootramazanayoz.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,10 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.FakeDataDao;
-import dao.UserDao;
-import model.User;
+import com.ramazanayoz.learningspringbootramazanayoz.dao.UserDao;
+import com.ramazanayoz.learningspringbootramazanayoz.model.User;
+
+
 
 @Service
 public class UserService {

@@ -12,8 +12,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.User;
-import model.User.Gender;
+import com.ramazanayoz.learningspringbootramazanayoz.dao.FakeDataDao;
+import com.ramazanayoz.learningspringbootramazanayoz.model.User;
+import com.ramazanayoz.learningspringbootramazanayoz.model.User.Gender;
+
 
 public class FakeDataDaoTest {
 	

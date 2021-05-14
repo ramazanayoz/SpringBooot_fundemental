@@ -18,12 +18,14 @@ import org.mockito.BDDMockito;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import dao.FakeDataDao;
-import model.User;
-import model.User.Gender;
+
 import net.bytebuddy.asm.Advice.Argument;
 
 import com.google.common.collect.ImmutableList;
+import com.ramazanayoz.learningspringbootramazanayoz.dao.FakeDataDao;
+import com.ramazanayoz.learningspringbootramazanayoz.model.User;
+import com.ramazanayoz.learningspringbootramazanayoz.model.User.Gender;
+import com.ramazanayoz.learningspringbootramazanayoz.service.UserService;
 
 
 public class UserServiceTest {
