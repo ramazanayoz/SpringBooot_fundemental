@@ -1,8 +1,10 @@
 package com.ramazanayoz.learningspringbootramazanayoz.resource_otherName_api_otherName_controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,5 +26,10 @@ public class UserResource {
 	@RequestMapping(method = RequestMethod.GET)
 	public List<User> fetUsers(){
 		return userService.getAllUsers();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "{userUid}")
+	public User fetchUser(@PathVariable("userUid") UUID useUid) {
+		return userService.getUser(useUid).get();
 	}
 }
