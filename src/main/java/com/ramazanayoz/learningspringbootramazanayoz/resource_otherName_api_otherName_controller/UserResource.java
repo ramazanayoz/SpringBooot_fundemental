@@ -11,6 +11,7 @@ import com.ramazanayoz.learningspringbootramazanayoz.model.User;
 import com.ramazanayoz.learningspringbootramazanayoz.service.UserService;
 
 @RestController
+@RequestMapping(path = "/api/v1/users")
 public class UserResource {
 
 	private UserService userService;
