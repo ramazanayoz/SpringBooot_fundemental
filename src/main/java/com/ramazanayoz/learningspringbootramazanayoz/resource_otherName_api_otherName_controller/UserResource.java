@@ -43,6 +43,16 @@ public class UserResource {
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Integer> insertNewUser(@RequestBody User user) {
 		int result = userService.insertUser(user);
+		return getIntegerResponseEntity(result);
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Integer> updateUser(@RequestBody User user) {
+		int result = userService.updateUser(user);
+		return getIntegerResponseEntity(result);
+	}
+
+	private ResponseEntity<Integer> getIntegerResponseEntity(int result) {
 		if(result == 1) {
 			return ResponseEntity.ok().build();
 		}
