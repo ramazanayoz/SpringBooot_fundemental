@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.ws.rs.QueryParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,7 +31,9 @@ public class UserResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<User> fetUsers(){
+	public List<User> fetchUsers(@QueryParam("gender") String gender, @QueryParam("ageLessThan") Integer ageLessThan){
+		System.out.println(gender);
+		System.out.println(ageLessThan);
 		return userService.getAllUsers();
 	}
 	
