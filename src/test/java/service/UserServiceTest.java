@@ -3,7 +3,7 @@ package service;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -58,8 +58,35 @@ public class UserServiceTest {
 		BDDMockito.given(fakeDataDao.selectAllUsers()).willReturn(users);
 		
 		//service
-		List<User> allUsers = userService.getAllUsers();
+		List<User> allUsers = userService.getAllUsers(Optional.empty());
 		assertThat(allUsers).hasSize(1);
+	}
+	
+	@Test
+	public void testGetAllUserByGender() throws Exception {
+		UUID annaUserUuid = UUID.randomUUID();
+		
+		User anna = new User(annaUserUuid,"anna","montana",Gender.FEMALE, 30, "anna@gmail.com");
+	
+		UUID joeUserUuid = UUID.randomUUID();
+		
+		User joe = new User(joeUserUuid,"joe","jones",Gender.MALE, 30, "anna@gmail.com");
+
+		ImmutableList<User> users = new ImmutableList.Builder<User>()
+				.add(anna)
+				.add(joe)
+				.build();
+		
+		BDDMockito.given(fakeDataDao.selectAllUsers()).willReturn(users);
+		
+		List<User> filteredUsers = userService.getAllUsers(Optional.of("MALE"));
+		assertThat(filteredUsers).hasSize(1);
+	}
+	
+	@Test
+	public void TestThrowExceptionWhenGenderIsInvalid() throws Exception {
+		assertThatThrownBy(() -> userService.getAllUsers(Optional.of("adad")))
+		.hasMessageContaining("Invalid gender");
 	}
 
 	@Test
@@ -79,14 +106,13 @@ public class UserServiceTest {
 	public void testUpdateUser() {
 		//variables
 		UUID annaUid = UUID.randomUUID();
+		User anna = new User(annaUid,"anna","montana",Gender.FEMALE, 30, "anna@gmail.com");				
 		ArgumentCaptor<User> captor = ArgumentCaptor.forClass(User.class);
-		User anna = new User(annaUid,"anna","montana",Gender.FEMALE, 30, "anna@gmail.com");		
-		
 		
 		BDDMockito.given(fakeDataDao.selectUserByUserUid(annaUid)).willReturn(Optional.of(anna));
-
-		userService.insertUser(anna);
-
+		
+		BDDMockito.given(fakeDataDao.updateUser(anna)).willReturn(1);
+		
 		int updateResult = userService.updateUser(anna);
 				
 		verify(fakeDataDao).updateUser(captor.capture());
