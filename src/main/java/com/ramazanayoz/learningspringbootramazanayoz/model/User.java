@@ -2,19 +2,27 @@ package com.ramazanayoz.learningspringbootramazanayoz.model;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class User {
 	
 	//user id
 	private UUID userUid;
-	private String fistName;
-	private String lastName;
-	private Gender gender;
-	private Integer age;
-	private String email;
+	private final String firstName;
+	private final String lastName;
+	private final Gender gender;
+	private final Integer age;
+	private final String email;
 	
-	public User(UUID userUid, String fistName, String lastName, Gender gender, Integer age, String email) {
+	public User(
+			@JsonProperty("userUid") UUID userUid, 
+			@JsonProperty("firstName") String firstName, 
+			@JsonProperty("lastName") String lastName, 
+			@JsonProperty("gender") Gender gender, 
+			@JsonProperty("age") Integer age, 
+			@JsonProperty("email") String email) {
 		this.userUid = userUid;
-		this.fistName = fistName;
+		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 		this.age = age;
@@ -30,12 +38,9 @@ public class User {
 		return userUid;
 	}
 	
-	public void setUserUid(UUID userUid) {
-		this.userUid = userUid;
-	}
 
-	public String getFistName() {
-		return fistName;
+	public String getFirstName() {
+		return firstName;
 	}
 
 	public String getLastName() {
@@ -53,10 +58,15 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
+	
+	public static User newUser(UUID userUid, User user) {
+		return new User(userUid, user.getFirstName(),user.getLastName(),user.gender,
+				user.getAge(), user.getEmail());
+	}
 
 	@Override
 	public String toString() {
-		return "User [userUid=" + userUid + ", fistName=" + fistName + ", lastName=" + lastName + ", gender=" + gender
+		return "User [userUid=" + userUid + ", fistName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
 				+ ", age=" + age + ", email=" + email + "]";
 	}
 	

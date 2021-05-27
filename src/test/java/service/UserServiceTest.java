@@ -99,7 +99,7 @@ public class UserServiceTest {
 		
 		assertThat(userOptional.isPresent()).isTrue();
 		User user = userOptional.get();
-		assertThat(user.getFistName()).isEqualTo("anna");
+		assertThat(user.getFirstName()).isEqualTo("anna");
 	}
 
 	@Test
@@ -119,7 +119,7 @@ public class UserServiceTest {
 
 		User user = captor.getValue();
 		
-		assertThat(user.getFistName()).isEqualTo("anna");
+		assertThat(user.getFirstName()).isEqualTo("anna");
 		
 		assertThat(anna).isEqualToComparingFieldByField(captor.getValue());
 
@@ -164,7 +164,7 @@ public class UserServiceTest {
 		
 		User user = captor.getValue();
 		
-		assertThat(user.getFistName()).isEqualTo(anna.getFistName());
+		assertThat(user.getFirstName()).isEqualTo(anna.getFirstName());
 		
 		assertThat(insertResult).isEqualTo(1);
 		
