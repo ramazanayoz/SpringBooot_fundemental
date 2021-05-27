@@ -15,7 +15,7 @@ public class User {
 	private final String email;
 	
 	public User(
-			@JsonProperty("userUid") UUID userUid, 
+			@JsonProperty("id") UUID userUid, 
 			@JsonProperty("firstName") String firstName, 
 			@JsonProperty("lastName") String lastName, 
 			@JsonProperty("gender") Gender gender, 
@@ -34,6 +34,7 @@ public class User {
 		FEMALE
 	}
 
+	@JsonProperty("id")
 	public UUID getUserUid() {
 		return userUid;
 	}
