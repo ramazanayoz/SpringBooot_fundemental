@@ -39,7 +39,7 @@ public class UserResource {
 	public ResponseEntity<?> fetchUser(@PathVariable("userUid") UUID userUid) {
 		return userService.getUser(userUid).<ResponseEntity<?>>map(ResponseEntity::ok)
 			.orElseGet(()-> ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorMessage("user"+ userUid+ " was not found.")));
-	}
+	}  
 	
 	
 	@RequestMapping(method = RequestMethod.POST, 
