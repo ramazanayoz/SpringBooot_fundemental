@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ramazanayoz.learningspringbootramazanayoz.model.User;
 import com.ramazanayoz.learningspringbootramazanayoz.service.UserService;
 
-@RestController
-@RequestMapping(path = "/api/v1/users")
-public class UserResource {
+//@RestController
+//@RequestMapping(path = "/api/v1/users")
+public class UserResourceSpringMVC {
 
 	private UserService userService;
 	
 	@Autowired
-	public UserResource(UserService userService) {
+	public UserResourceSpringMVC(UserService userService) {
 		this.userService = userService;
 	}
 	
