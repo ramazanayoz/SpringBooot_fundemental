@@ -16,8 +16,8 @@
 	<properties>
 		<java.version>1.8</java.version>
         <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-        <rest.easy.client.verision>3.1.4.Final</rest.easy.client.verision>
-        <jboss.rest.easy.verison>4.8.0.Final</jboss.rest.easy.verison>
+        <rest.easy.client.version>4.6.0.Final</rest.easy.client.version>
+        <jboss.rest.easy.version>4.8.0.Final</jboss.rest.easy.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -41,7 +41,7 @@
 		<dependency>
 		   <groupId>org.jboss.resteasy</groupId>
 		   <artifactId>resteasy-spring-boot-starter</artifactId>
-		   <version>${jboss.rest.easy.verison}</version>
+		   <version>${jboss.rest.easy.version}</version>
 		   <scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -53,7 +53,7 @@
 		<dependency>
 		    <groupId>org.jboss.resteasy</groupId>
 		    <artifactId>resteasy-client</artifactId>
-		    <version>${rest.easy.client.verision}</version>
+		    <version>${rest.easy.client.version}</version>
 		</dependency>
 
 	</dependencies>
