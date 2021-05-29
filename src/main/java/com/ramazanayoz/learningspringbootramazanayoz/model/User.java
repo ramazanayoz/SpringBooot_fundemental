@@ -3,6 +3,7 @@ package com.ramazanayoz.learningspringbootramazanayoz.model;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
@@ -45,6 +46,7 @@ public class User {
 		return firstName;
 	}
 
+	@JsonIgnore
 	public String getLastName() {
 		return lastName;
 	}
