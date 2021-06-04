@@ -16,7 +16,7 @@ public class ClientProxyConfig {
 	
 	@Bean
 	public IUserResourceV1 getIUserResourceV1() {
-		IUserResourceV1 proxy;
+		IUserResourceV1 proxy; 
 		ResteasyClient client = new ResteasyClientBuilderImpl().build();
 		ResteasyWebTarget target = client.target(userEndpointUrl);
 		proxy = target.proxy(IUserResourceV1.class);
