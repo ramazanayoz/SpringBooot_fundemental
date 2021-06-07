@@ -84,7 +84,7 @@ class LearningSpringBootRamazanAyozApplicationTests {
 		
 		List<User> males = userResourceV1.fetchUser(Gender.MALE.name());
 
-		assertThat(males).extracting("userUid").contains(user.getUserUid());
+		assertThat(males).extracting("userUid").contains(user.getUserUid()); 
 		assertThat(males).extracting("firstName").contains(user.getFirstName());
 		assertThat(males).extracting("lastName").contains(user.getLastName());
 		assertThat(males).extracting("gender").contains(user.getGender());
