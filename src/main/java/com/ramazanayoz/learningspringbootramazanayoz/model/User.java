@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 	
 	//user id
@@ -17,7 +19,7 @@ public class User {
 	private final String email;
 	
 	public User(
-			@JsonProperty("id") UUID userUid, 
+			@JsonProperty("userUid") UUID userUid, 
 			@JsonProperty("firstName") String firstName, 
 			@JsonProperty("lastName") String lastName, 
 			@JsonProperty("gender") Gender gender, 
@@ -36,7 +38,7 @@ public class User {
 		FEMALE
 	}
 
-	@JsonProperty("id")
+	//@JsonProperty("id")
 	public UUID getUserUid() {
 		return userUid;
 	}
@@ -46,7 +48,7 @@ public class User {
 		return firstName; 
 	}
 
-	@JsonIgnore
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -63,6 +65,7 @@ public class User {
 		return email;
 	}
 	
+	@JsonIgnore
 	public String getFullName() {
 		return firstName + " " + lastName;
 	}
@@ -72,8 +75,8 @@ public class User {
 	}
 	
 	public static User newUser(UUID userUid, User user) {
-		return new User(userUid, user.getFirstName(),user.getLastName(),user.gender,
-				user.getAge(), user.getEmail());
+		return new User(userUid, user.firstName,user.lastName,user.gender,
+				user.age, user.email);
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -49,9 +50,10 @@ public class UserResourceResteasy {
 	@GET
 	@Produces("application/json")
 	@Path("{userUid}")
-	public ResponseEntity<?> fetchUser(@PathParam("userUid") UUID userUid) {
-		return userService.getUser(userUid).<ResponseEntity<?>>map(ResponseEntity::ok)
-			.orElseGet(()-> ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorMessage("user"+ userUid+ " was not found.")));
+	public User fetchUser(@PathParam("userUid") UUID userUid) {
+        return userService
+                .getUser(userUid)
+                .orElseThrow(() -> new NotFoundException("user " + userUid + " not found"));
 	}  
 	
 	@POST

@@ -23,26 +23,26 @@ public interface IUserResourceV1 {
 	
 	@GET
 	@Produces("application/json")
-	public List<User> fetchUser(@QueryParam("gender") String gender);
+	List<User> fetchUser(@QueryParam("gender") String gender);
 	
 	@GET
 	@Produces("application/json")
 	@Path("{userUid}")
-	public ResponseEntity<?> fetchUser(@PathParam("userUid") UUID userUid);
+	User fetchUser(@PathParam("userUid") UUID userUid);
 	
 	@POST 
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response insertNewUser(@RequestBody User user);
+	void insertNewUser(@RequestBody User user);
 	
 	@PUT
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response updateUser(@RequestBody User user);
+	void updateUser(@RequestBody User user);
 	
 	@DELETE
 	@Produces("application/json")
 	@Path("{userUid}")
-	public Response deleteUser(@PathParam("userUid") UUID userUid);
+	void deleteUser(@PathParam("userUid") UUID userUid);
 
 }
