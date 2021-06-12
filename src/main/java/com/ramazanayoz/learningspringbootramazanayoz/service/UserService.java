@@ -2,6 +2,7 @@ package com.ramazanayoz.learningspringbootramazanayoz.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -62,8 +63,17 @@ public class UserService {
 
 	public int insertUser(User user) {
 		UUID userUuid = user.getUserUid() == null ? UUID.randomUUID() : user.getUserUid();
+		validateUser(user);
 		return userDao.insertUser(userUuid, User.newUser(userUuid, user));
 		
+	}
+	
+	private void validateUser(User user) {
+		Objects.requireNonNull(user.getFirstName(), "first name required");
+		Objects.requireNonNull(user.getLastName(), "last name required");
+		Objects.requireNonNull(user.getAge(), "age required");
+		Objects.requireNonNull(user.getEmail(), "email name required");
+		Objects.requireNonNull(user.getGender(), "gender name required");
 	}
 
 }
