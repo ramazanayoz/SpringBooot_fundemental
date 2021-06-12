@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -22,6 +23,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.ramazanayoz.learningspringbootramazanayoz.model.User;
 import com.ramazanayoz.learningspringbootramazanayoz.service.UserService;
 
+@Validated
 @Component
 @Path("api/v1/users")
 public class UserResourceResteasy {
@@ -59,7 +62,7 @@ public class UserResourceResteasy {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public Response insertNewUser(@RequestBody User user) {
+	public Response insertNewUser(@Valid @RequestBody User user) {
 		int result = userService.insertUser(user);
 		return getIntegerResponseEntity(result);
 	}
